@@ -124,9 +124,9 @@ function Update_leaderBoard(){
 function initializeRepo(){
       const response = request('GET', 'https://opensheet.elk.sh/1v7VqK6i_xJK4nJ6GKzoeafwrnlJR8Y5-8v0Qfsh3gqo/Shortlisted');
       const jsonData = JSON.parse(response.getBody('utf8'));
-      console.log(jsonData);
       GLOBAL_DT['repos_list'] = jsonData
-  }
+      console.log("Repo List is fetched");
+  } 
 
 
 app.get("/getLeaderBoard", (req, res) => {
