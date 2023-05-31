@@ -1,13 +1,3 @@
-var dt = {"Anurag-Raut":{"user_name":"Anurag-Raut","user_avatar":"https://avatars.githubusercontent.com/u/102049482?v=4","points":20},
-"akshaya-hub":{"user_name":"akshaya-hub","user_avatar":"https://avatars.githubusercontent.com/u/76612327?v=4","points":60},
-"Rishav1707":{"user_name":"Rishav1707","user_avatar":"https://avatars.githubusercontent.com/u/97666287?v=4","points":30},
-"abhinav-m22":{"user_name":"abhinav-m22","user_avatar":"https://avatars.githubusercontent.com/u/113239388?v=4","points":70},
-"sumitkr2000":{"user_name":"sumitkr2000","user_avatar":"https://avatars.githubusercontent.com/u/100675296?v=4","points":90},
-"0xabdulkhalid":{"user_name":"0xabdulkhalid","user_avatar":"https://avatars.githubusercontent.com/u/92252895?v=4","points":100},
-"ritik48":{"user_name":"ritik48","user_avatar":"https://avatars.githubusercontent.com/u/84488726?v=4","points":140},
-"raj3000k":{"user_name":"raj3000k","user_avatar":"https://avatars.githubusercontent.com/u/91799854?v=4","points":70},
-"govardhan-26":{"user_name":"govardhan-26","user_avatar":"https://avatars.githubusercontent.com/u/89705565?v=4","points":20}
-}
 var GLOBAL_DT = []
 var tb = document.querySelector("#tb")
 var current_pointer = 0;
