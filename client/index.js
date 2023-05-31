@@ -2,8 +2,8 @@ var GLOBAL_DT = []
 var tb = document.querySelector("#tb")
 var current_pointer = 0;
 var ind =0;
-
-const start = async(url="http://localhost:3000/getLeaderBoard")=>{
+var backend_url = "https://api-leaderboard.onrender.com/getLeaderBoard"
+const start = async(url="https://api-leaderboard.onrender.com/getLeaderBoard")=>{
     const res = await fetch(url);
     const json_ = await res.json();
     console.log(json_)
