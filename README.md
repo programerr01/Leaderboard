@@ -1,2 +1,2 @@
 # Leaderboard-
-LeaderBoard for Girlscript Summer of Code (GGSOC)
+LeaderBoard for Girlscript Summer of Code (GSSOC)
