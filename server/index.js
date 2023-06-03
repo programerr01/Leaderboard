@@ -1,6 +1,8 @@
 const express = require("express")
 const cors = require("cors");
 const request = require('sync-request');
+const morgan = require('morgan')
+
 require('dotenv').config()
 
 const app = express();
@@ -18,6 +20,7 @@ function sleep(ms) {
 
 app.use(cors())
 app.use(express.json())
+app.use(morgan('combined'))
 
 app.get("/", (req, res) => {
   res.send(JSON.stringify({"status":200,"working":true}));
@@ -137,9 +140,9 @@ app.get("/get", (req, res) => {
   res.send(JSON.stringify(GLOBAL_DT['repos_list']));
 });
 
-const port = process.env.PORT || 80
+const port = process.env.PORT || 3000
 app.listen(port,() => {
-  initializeRepo();
+ initializeRepo();
   try{
     Update_leaderBoard();
 
@@ -147,6 +150,7 @@ app.listen(port,() => {
   catch(err){
     console.log("error",err);
   }
+  
   console.log(`backend running at port ${port}`);
 })
 
