@@ -1,38 +1,81 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Leaderboard</title>
-    <script defer src="./index.js" ></script>
-     <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <script defer src="./index.js"></script>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
 
     <style>
         table {
             width: 100%;
             border-collapse: collapse;
         }
-        
-        th, td {
+
+        th,
+        td {
             padding: 8px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
-        
+
         th {
             background-color: #f2f2f2;
         }
-        
+
         .leaderboard-image {
             max-width: 50px;
             max-height: 50px;
         }
+
         #load-more {
             margin-top: 20px;
         }
 
+        #searchForm {
+            max-width: 50%;
+            margin: auto;
+        }
+
+        .form-control {
+            width: 100%;
+            margin: auto;
+            padding: 0.8rem 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.01);
+            border-radius: 0.5rem;
+        }
+        
+        .btn {
+            padding: 0.5rem 1.2rem;
+            border: none;
+            outline: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.01);
+            border-radius: 0.5rem;
+            width: 50%;
+            margin: 0.4rem;
+            font-size: 1rem;
+        }
+
+        .btn-blue {
+            background-color: lightgreen;
+        }
+        .btn-yellow {
+            background-color: lightsalmon;
+        }
     </style>
 </head>
+
 <body>
-    <h1>Leaderboard GSSOC'23</h1>
+    <h1 style="text-align: center;">Leaderboard GSSOC'23</h1>
+
+    <form method="get" id="searchForm">
+        <input type="search" name="search" id="search" placeholder="Enter your github username..." class="form-control">
+        <div style="display: flex; margin: 0.5rem 0;">
+            <button type="submit" class="btn btn-blue">Search</button>
+            <button type="reset" onclick="location.reload()" class="btn btn-yellow">Clear filter</button>
+        </div>
+    </form>
+
     <table id="tb">
         <tr>
             <th>Rank</th>
@@ -40,10 +83,10 @@
             <th>Score</th>
             <th>Image</th>
         </tr>
-        
         <!-- Add more rows for additional leaderboard entries -->
     </table>
     <button id="load-more">Load More</button>
 
 </body>
+
 </html>
