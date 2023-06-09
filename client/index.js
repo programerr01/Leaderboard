@@ -8,7 +8,7 @@ const start = async (
 ) => {
   const res = await fetch(url);
   const json_ = await res.json();
-  console.log(json_);
+  // console.log(json_);
   GLOBAL_DT = Object.entries(json_).sort((c, d) => -c[1].points + d[1].points);
 
   GLOBAL_DT.slice(current_pointer, current_pointer + 30).map((each) => {
@@ -65,10 +65,9 @@ let form = document.querySelector("#searchForm");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log(e.target[0].value);
 
+  // TODO: if you want to use query param approach 
   //   const urlParams = new URLSearchParams(window.location.search);
-
   //   console.log(urlParams.get("search"));
 
   const input = e.target[0].value;
@@ -78,7 +77,10 @@ form.addEventListener("submit", (e) => {
       (element) => element[1]["user_name"].toLowerCase() === input.toLowerCase()
     )[0][1];
 
-    console.log("Searched value", searchedData);
+    const rankIndex = GLOBAL_DT.findIndex(
+      (element) => element[1]["user_name"].toLowerCase() === input.toLowerCase()
+    );
+
     const entry = `
     <tr>
                 <th>Rank</th>
@@ -87,7 +89,7 @@ form.addEventListener("submit", (e) => {
                 <th>Image</th>
             </tr>
     <tr>
-            <td>-</td>
+            <td>${rankIndex}</td>
             <td><a href="https://github.com/${searchedData["user_name"]}">${searchedData["user_name"]}</a></td>
             <td>${searchedData["points"]}</td>
             <td><img class="leaderboard-image" src="${searchedData["user_avatar"]}" alt="Player 1"></td>
