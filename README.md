@@ -4,3 +4,9 @@
 ## Tasks 
 - [ ] Showing Rank with Search result 
 - [ ] Running Cron Job for Periodic Updation of Leaderboard
+
+
+## Contributors 
+<a href="https://github.com/programerr01/Leaderboard/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=programerr01/Leaderboard" />
+</a>
