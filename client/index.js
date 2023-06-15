@@ -1,9 +1,15 @@
 var GLOBAL_DT = []
 var tb = document.querySelector("#tb")
+const loadingContainer = document.getElementById('loading-container');
+
+
+
+
 var current_pointer = 0;
 var ind =0;
 var backend_url = "https://api-leaderboard.onrender.com/getLeaderBoard"
 const start = async(url="https://api-leaderboard.onrender.com/getLeaderBoard")=>{
+    loadingContainer.style.display = 'flex'; 
     const res = await fetch(url);
     const json_ = await res.json();
     console.log(json_)
@@ -16,8 +22,10 @@ const start = async(url="https://api-leaderboard.onrender.com/getLeaderBoard")=>
         <td><img class="leaderboard-image" src="${each[1]['user_avatar']}" alt="Player 1"></td>
     </tr>
     `
+    loadingContainer.style.display = 'none';
     tb.innerHTML +=entry;
     })
+    
     current_pointer+=30;
 
 }
