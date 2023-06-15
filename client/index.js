@@ -1,3 +1,4 @@
+
 var GLOBAL_DT = []
 var tb = document.querySelector("#tb")
 const loadingContainer = document.getElementById('loading-container');
@@ -17,9 +18,13 @@ const start = async(url="https://api-leaderboard.onrender.com/getLeaderBoard")=>
     GLOBAL_DT.slice(current_pointer,current_pointer+30).map((each)=>{
         var entry = `<tr>
         <td>${++ind}</td>
-        <td><a href="https://github.com/${each[1]['user_name']}">${each[1]['user_name']}</a></td>
-        <td>${each[1]['points']}</td>
-        <td><img class="leaderboard-image" src="${each[1]['user_avatar']}" alt="Player 1"></td>
+        <td><a href="https://github.com/${each[1]["user_name"]}">${
+      each[1]["user_name"]
+    }</a></td>
+        <td>${each[1]["points"]}</td>
+        <td><img class="leaderboard-image" src="${
+          each[1]["user_avatar"]
+        }" alt="Player 1"></td>
     </tr>
     `
     loadingContainer.style.display = 'none';
@@ -30,22 +35,26 @@ const start = async(url="https://api-leaderboard.onrender.com/getLeaderBoard")=>
 
 }
 
-document.querySelector("#load-more").addEventListener('click', ()=>{
-    GLOBAL_DT.slice(current_pointer,current_pointer+30).map((each)=>{
-        var entry = `<tr>
-        <td>${++ind}</td>
-        <td><a href="https://github.com/${each[1]['user_name']}">${each[1]['user_name']}</a></td>
-        <td>${each[1]['points']}</td>
-        <td><img class="leaderboard-image" src="${each[1]['user_avatar']}" alt="Player 1"></td>
-    </tr>
-    `
-    tb.innerHTML +=entry;
-    })
-    current_pointer+=30;
 
+document.querySelector("#load-more").addEventListener("click", () => {
+  GLOBAL_DT.slice(current_pointer, current_pointer + 30).map((each) => {
+    var entry = `<tr>
+        <td>${++ind}</td>
+        <td><a href="https://github.com/${each[1]["user_name"]}">${
+      each[1]["user_name"]
+    }</a></td>
+        <td>${each[1]["points"]}</td>
+        <td><img class="leaderboard-image" src="${
+          each[1]["user_avatar"]
+        }" alt="Player 1"></td>
+    </tr>
+    `;
+    tb.innerHTML += entry;
+  });
+  current_pointer += 30;
 });
 
-var tb = document.querySelector("#tb")
+var tb = document.querySelector("#tb");
 var i = 1;
 // for(var each in dt){
 //     var str = `<tr>
@@ -59,3 +68,44 @@ var i = 1;
 //     i+=1;
 // }
 start();
+
+let form = document.querySelector("#searchForm");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  // TODO: if you want to use query param approach 
+  //   const urlParams = new URLSearchParams(window.location.search);
+  //   console.log(urlParams.get("search"));
+
+  const input = e.target[0].value;
+
+  if (input !== undefined && input !== "") {
+    const searchedData = GLOBAL_DT.filter(
+      (element) => element[1]["user_name"].toLowerCase() === input.toLowerCase()
+    )[0][1];
+
+    const rankIndex = GLOBAL_DT.findIndex(
+      (element) => element[1]["user_name"].toLowerCase() === input.toLowerCase()
+    );
+
+    const entry = `
+    <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Score</th>
+                <th>Image</th>
+            </tr>
+    <tr>
+            <td>${rankIndex}</td>
+            <td><a href="https://github.com/${searchedData["user_name"]}">${searchedData["user_name"]}</a></td>
+            <td>${searchedData["points"]}</td>
+            <td><img class="leaderboard-image" src="${searchedData["user_avatar"]}" alt="Player 1"></td>
+        </tr>
+        `;
+
+    tb.innerHTML = entry;
+  } else {
+    window.location.reload();
+  }
+});
