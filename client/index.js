@@ -78,15 +78,15 @@ form.addEventListener("submit", (e) => {
   //   const urlParams = new URLSearchParams(window.location.search);
   //   console.log(urlParams.get("search"));
 
-  const input = e.target[0].value;
+  const input = e.target[0].value.toLowerCase();
 
   if (input !== undefined && input !== "") {
     const searchedData = GLOBAL_DT.filter(
-      (element) => element[1]["user_name"].toLowerCase() === input.toLowerCase()
+      (element) => element[1]["user_name"].toLowerCase().includes(input)
     )[0][1];
 
     const rankIndex = GLOBAL_DT.findIndex(
-      (element) => element[1]["user_name"].toLowerCase() === input.toLowerCase()
+      (element) => element[1]["user_name"].toLowerCase().includes(input)
     );
 
     const entry = `
