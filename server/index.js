@@ -141,16 +141,15 @@ app.get("/get", (req, res) => {
 });
 
 const port = process.env.PORT || 3000
+
 app.listen(port,() => {
  initializeRepo();
   try{
     Update_leaderBoard();
-
   }
   catch(err){
     console.log("error",err);
   }
-  
   console.log(`backend running at port ${port}`);
 })
 
