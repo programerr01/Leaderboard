@@ -92,11 +92,11 @@ form.addEventListener("submit", (e) => {
     for (i = 0; i < searchedData.length; i++) {
       let userName = searchedData[i][0];
       let points = searchedData[i][1].points;
-      let userAvatar = GLOBAL_DT[i][1].user_avatar;
       let rank =
-        GLOBAL_DT.findIndex((element) =>
-          element[0].toLowerCase().includes(userName.toLowerCase())
-        ) + 1;
+      GLOBAL_DT.findIndex((element) =>
+      element[0].toLowerCase().includes(userName.toLowerCase())
+      ) + 1;
+      let userAvatar = GLOBAL_DT[rank-1][1].user_avatar;
 
       let entry = `
         <tr>
